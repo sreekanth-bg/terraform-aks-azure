@@ -20,9 +20,9 @@ for local and QA
 refer - https://github.com/sreekanth-bg/devspace-vcluster-argocd-demo/
 
 export GITHUB_ORG=sreekanth-bg
-export GITHUB_TOKEN=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
-export INGRESS_HOST=20.54.195.202
-export DOCKERHUB_TOKEN=dd64d995-869f-4d7c-b43c-ec495041da1d
+export GITHUB_TOKEN=
+export INGRESS_HOST=
+export DOCKERHUB_TOKEN=
 export DOCKERHUB_USERNAME=infovein69
 
 kubectl apply -f ingress.yaml -n argocd
