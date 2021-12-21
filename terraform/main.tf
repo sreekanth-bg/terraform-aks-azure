@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source = "hashicorp/azurerm"
-      version = ">2.24.2"
+      version = ">2.88.0"
     }
   }
 }
@@ -35,6 +35,14 @@ resource "azurerm_kubernetes_cluster" "demo" {
   location            = azurerm_resource_group.demo.location
   resource_group_name = azurerm_resource_group.demo.name
   dns_prefix          = "${var.prefix}-aks"
+
+  linux_profile {
+    admin_username = "ubuntu"
+
+    ssh_key {
+        key_data = file(var.ssh_public_key)
+    }
+  }
 
   default_node_pool {
     name                = "default"
@@ -69,6 +77,12 @@ resource "azurerm_kubernetes_cluster" "demo" {
     load_balancer_sku = "standard"
     network_policy    = "calico"
   }
+
+  # addon_profile {                     # https://docs.microsoft.com/en-us/azure/aks/http-application-routing
+  #   http_application_routing {
+  #     enabled = true
+  #   }
+  # }
 
   tags = {
     Environment = "Development"
