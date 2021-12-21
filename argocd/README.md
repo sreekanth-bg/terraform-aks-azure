@@ -1,4 +1,5 @@
-<!-- steps for argocd
+'''
+steps for argocd
 
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 
@@ -12,9 +13,9 @@ helm install nginx-ingress ingress-nginx/ingress-nginx \
     --set defaultBackend.nodeSelector."kubernetes\.io/os"=linux \
     --set defaultBackend.image.digest=""
 	
-kubectl --namespace ingress-basic get services -o wide -w nginx-ingress-ingress-nginx-controller -->
+kubectl --namespace ingress-basic get services -o wide -w nginx-ingress-ingress-nginx-controller 
 
-<!-- for local and QA
+for local and QA
 
 refer - https://github.com/sreekanth-bg/devspace-vcluster-argocd-demo/
 
@@ -30,4 +31,5 @@ k3d kubeconfig merge devops-toolkit
 export KUBECONFIG=/home/bgs/.k3d/kubeconfig-devops-toolkit.yaml
 
 vcluster list
-vcluster --namespace a-team delete a-team -->
+vcluster --namespace a-team delete a-team
+'''
